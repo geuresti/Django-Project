@@ -1,8 +1,0 @@
-admin:
-gio
-gioeuresti123@gmail.com
-myproject123
-
-django girls tutorial
-
-add virtual env to this dir?
