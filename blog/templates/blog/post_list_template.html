@@ -1,10 +1,19 @@
 <html>
 
-	<h1> TESTING POST LIST </h1>
+	<title> Blogs </title>
 
-		{% for t in titles %}
-			<li> {{ t }} </li>
-		{% endfor %}
+		<div>
+			<h1><style="margin-left: 50x" a href="/">List Of Blogs</a></h1>
+		</div>
 
+		<br>
+
+	{% for post in posts %}
+    <div>
+        	<h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+				<p>Published: {{ post.published_date }} </p>
+    </div>
+	{% endfor %}
 
 </html>
