@@ -1,19 +1,16 @@
-<html>
+{% extends 'blog/base.html' %}
 
-	<title> Blogs </title>
+<!-- extends base, inserting {blocked} code where the block
+content tags are located in the base -->
 
-		<div>
-			<h1><style="margin-left: 50x" a href="/">List Of Blogs</a></h1>
-		</div>
-
-		<br>
-
+{%block content %}
 	{% for post in posts %}
-    <div>
-        	<h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+		<div class="post">
+			<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+			<p>{{ post.text|linebreaksbr }}</p>
+			<div class="date">
 				<p>Published: {{ post.published_date }} </p>
-    </div>
+			</div>
+		</div>
 	{% endfor %}
-
-</html>
+{% endblock %}
