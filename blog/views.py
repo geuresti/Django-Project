@@ -4,8 +4,11 @@ from .models import Post
 from django.utils import timezone
 from .forms import PostForm
 
-def generic(request):
-    return render(request, 'blog/generic.html', {})
+def redirect_home(request):
+    return redirect('homepage')
+
+def home(request):
+    return render(request, 'blog/homepage.html', {})
 
 def post_list(request):
     #args = Post.objects.all()
@@ -45,3 +48,6 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def projects_page(request):
+    return render(request, 'blog/projects.html', {})
