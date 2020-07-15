@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+   {% extends 'blog/base.html' %}
+
+   {% load static %}
+
+    <head>
+      <title> Homepage </title>
+    </head>
+
+    <body>
+      {% block title %} Homepage {% endblock %}
+
+      {% block content %}
+        <div class="post" style="width:450px;">
+          <h2> Test Website. Click <a href="/posts">here</a> to go to the blog page. </h2>
+          <p> Currently the only pages available are the homepage and a blog page, which
+          can only be editted by authenticated users. Maybe I can add account creating
+         functionality so anyone can come onto the site, make an account, and post a blog. </p>
+        </div>
+
+        <div class="photo">
+          <img src="{% static 'blog/mountains.jpg' %}" alt="mountains">
+        </div>
+
+      {% endblock %}
+    </body>
+
+</html>
