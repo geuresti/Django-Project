@@ -1,7 +1,6 @@
 {% load static %}
 <html>
 		<head>
-			<title> Homepage </title>
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 			<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
@@ -11,6 +10,13 @@
 
 			<div class="page-header">
 				{% if user.is_authenticated %}
+					<table style="float:right;">
+						<tr>
+							<td><p style="padding-right:5px;">Logged in as:</p></td>
+							<td><p style="font-weight:bold;">{{user.get_username}}</p></td>
+						</tr>
+							<p style=padding-left:10px;>|<a style=padding-left:10px; href="{% url 'logout' %}">Log out</a></p>
+					</table>
 					<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 				{% endif %}
 				<h1><a href="/"> {% block title %} Blog Page {% endblock %} </a></h1>

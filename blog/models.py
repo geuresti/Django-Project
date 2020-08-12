@@ -15,3 +15,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+#class Account(models.Model):
+#    username = models.CharField(label='Enter Username', max_length=15)
+#    password = models.CharField(label='Enter Password', max_length=30)
+#    password_confirm = models.CharField(label='Confirm Password', max_length=30)
+#    email = models.EmailField(label='Enter Email', max_length=30)
+
+#    def __str__(self):
+#        return self.username

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% extends 'blog/base.html' %}
+
+<html lang="en">
+
+  {% block content %}
+
+    <head>
+      <title> Create New Account </title>
+    </head>
+
+    <body>
+
+      <h2> Create A New Account </h2>
+
+      {% if messages %}
+        {% for m in messages %}
+          <li style=font-size:25px;>{{m}}</li>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <br>
+          <div style=width:28%;>
+            {{ form.as_p }}
+          </div>
+        <br>
+        <input type="submit" value="Create" name="create">
+
+      </form>
+    </body>
+
+  {% endblock %}
+
+</html>

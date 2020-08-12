@@ -15,6 +15,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'gioeuresti.pythonanywhere.com']
 
+# will redirect user to the homepage after login instead of profile page
+LOGIN_REDIRECT_URL = '/'
+
+# allows testing for email features. logs any emails to the console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -43,7 +48,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

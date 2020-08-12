@@ -1,23 +1,37 @@
 from django.shortcuts import render, get_object_or_404, redirect
-#    v-- current directory
+from django.http import HttpResponseRedirect
 from .models import Post
 from django.utils import timezone
-from .forms import PostForm
+from .forms import *  # PostForm, /AccountForm
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 def redirect_home(request):
     return redirect('homepage')
 
 def home(request):
-    return render(request, 'blog/homepage.html', {})
+    return render(request, 'blog/homepage.html')
+
+def register(request):
+     # create form, populate it w data from request
+    if request.method == 'POST':
+        f = UserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            messages.success(request, 'Account successfully created.')
+            return redirect('create_account')
+    # if GET, create blank form
+    else:
+        f = UserCreationForm()
+    return render(request, 'blog/create_account.html', {'form':f})
 
 def post_list(request):
-    #args = Post.objects.all()
-    #titles = {'title':args}
-    #return render(request, 'blog/post_list_template.html', titles)
     posts = Post.objects.order_by('created_date')
-    #<QuerySet [<Post: Test Post>, <Post: WA#8 Rough draft>, <Post: poster>, <Post: Bard>, <Post: Blogger>, <Post: Sample Text>, <Post: ABC>]>
     return render(request, 'blog/post_list_template.html', {'posts':posts})
 
+@login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post':post})
@@ -49,5 +63,5 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
-def projects_page(request):
-    return render(request, 'blog/projects.html', {})
+def test_page(request):
+    return render(request, 'blog/test_page.html')

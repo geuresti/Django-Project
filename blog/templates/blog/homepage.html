@@ -14,15 +14,23 @@
       {% block title %} Homepage {% endblock %}
 
       {% block content %}
-        <div class="post" style="width:450px;">
-          <h2> Test Website. Click <a href="/posts">here</a> to go to the blog page. </h2>
-          <p> Currently the only pages available are the homepage and a blog page, which
-          can only be editted by authenticated users. Maybe I can add account creating
-         functionality so anyone can come onto the site, make an account, and post a blog. </p>
+        <div class="post">
+          <h2> Test Website. Click <a href="{% url 'post_titles' %}">here</a> to go to the blog page. </h2>
+          <p> You MUST create an account in order to access and create blogs. </p>
         </div>
 
         <div class="photo">
-          <img src="{% static 'blog/mountains.jpg' %}" alt="mountains">
+          <img id="mountain" src="{% static 'blog/mountains.jpg' %}" alt="mountains">
+        </div>
+
+        <div class="post" style="width:300px;">
+          <h2> New To The Website? </h2>
+          <p> You can click <a href="{% url 'create_account' %}">here</a> to make an account. </p>
+        </div>
+
+        <div class="post" style="width:300px;">
+          <h2> Not Currently Signed In? </h2>
+          <p> You can click <a href="{% url 'login' %}"> here </a> to access the login page. </p>
         </div>
 
       {% endblock %}
