@@ -3,7 +3,7 @@
 <!-- extends base, inserting {blocked} code where the block
 content tags are located in the base -->
 
-{%block content %}
+{% block content %}
 
 	{% for post in posts %}
 		<div class="post">
@@ -14,5 +14,5 @@ content tags are located in the base -->
 			</div>
 		</div>
 	{% endfor %}
-	
+
 {% endblock %}

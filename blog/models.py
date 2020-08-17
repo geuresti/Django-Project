@@ -24,3 +24,7 @@ class Post(models.Model):
 
 #    def __str__(self):
 #        return self.username
+
+#class Profile(models.Model):
+#    users = models.OneToOneField(User)
+#    biography = CharField(max_length)

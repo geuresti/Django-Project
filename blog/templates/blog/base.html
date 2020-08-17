@@ -12,10 +12,10 @@
 				{% if user.is_authenticated %}
 					<table style="float:right;">
 						<tr>
-							<td><p style="padding-right:5px;">Logged in as:</p></td>
-							<td><p style="font-weight:bold;">{{user.get_username}}</p></td>
+							<td><p style="padding-right:5px;font-size:14;">Logged in as:</p></td>
+							<td><p style="font-weight:bold;"><a href="{% url 'profile' user.get_username %}">{{user.get_username}}</a></p></td>
 						</tr>
-							<p style=padding-left:10px;>|<a style=padding-left:10px; href="{% url 'logout' %}">Log out</a></p>
+							<p style=padding-left:10px;>|<a style=padding-left:10px;font-size:14px; href="{% url 'logout' %}">Log out</a></p>
 					</table>
 					<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 				{% endif %}

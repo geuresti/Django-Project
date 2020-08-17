@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <head>
+
+    <title>Profile</title>
+
+  </head>
+
+  <body>
+
+    <h1> Hello, {{ user.username }} </h1>
+
+    <br>
+    {% if posts %}
+      <br>
+      {% for p in posts %}
+        <div class="post">
+          <p style="font-size:16px;"><a href="{% url 'post_detail' pk=p.pk %}">{{ p.title }}</a></p>
+          <p style="font-size:13px;"> {{p.text}} </p>
+        </div>
+      {% endfor %}
+
+    {% else %}
+      <p> You haven't written any posts.Use the plus icon in the top right to start writing. </p>
+    {% endif %}
+
+  </body>
+
+{% endblock %}
+
+</html>

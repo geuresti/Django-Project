@@ -2,6 +2,8 @@
 
 {% extends 'blog/base.html' %}
 
+{% load static %}
+
 <html lang="en">
 
   {% block content %}
@@ -16,7 +18,10 @@
 
       {% if messages %}
         {% for m in messages %}
-          <li style=font-size:25px;>{{m}}</li>
+          <br>
+          <li style=font-size:18px;>{{m}}</li>
+          <li style=font-size:18px;> Click <a href="{% url 'login' %}"> here </a> to log in. </li>
+          <br>
         {% endfor %}
       {% endif %}
 

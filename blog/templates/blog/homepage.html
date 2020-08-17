@@ -33,6 +33,11 @@
           <p> You can click <a href="{% url 'login' %}"> here </a> to access the login page. </p>
         </div>
 
+        <div class="post" style="width:300px;">
+          <h2> Check out your profile! </h2>
+          <p> Click <a href="{% url 'profile' user.get_username %}"> here </a> to see the posts you've written. </p>
+        </div>
+
       {% endblock %}
     </body>
 

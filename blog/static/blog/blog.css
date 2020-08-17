@@ -22,8 +22,8 @@
   height: auto;
 }
 
-#var {
-  font-weight: bold;
+#trashcan {
+  padding: 10px;
 }
 
 .content {
@@ -36,6 +36,11 @@ h1, h2, h3, h4 {
 
 .date {
     color: #28C42D;
+}
+
+.bottom-hover {
+  position: fixed;
+  bottom: auto;
 }
 
 .save {
@@ -56,6 +61,7 @@ h1, h2, h3, h4 {
 .post {
     margin-bottom: 50px;
     display: block;
+    font-size: 15px;
 }
 
 .post h2 a, .post h2 a:visited {

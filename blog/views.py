@@ -27,8 +27,14 @@ def register(request):
         f = UserCreationForm()
     return render(request, 'blog/create_account.html', {'form':f})
 
+def delete(request, pk=-1):
+    if pk != -1:
+        Post.objects.filter(pk=pk).delete()
+
+    return redirect('post_titles')
+
 def post_list(request):
-    posts = Post.objects.order_by('created_date')
+    posts = Post.objects.order_by('created_date')[::-1]
     return render(request, 'blog/post_list_template.html', {'posts':posts})
 
 @login_required
@@ -49,6 +55,15 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form':form})
 
+@login_required
+def user_profile(request, username=""):
+    user = get_object_or_404(User, username = username)
+    if username:
+        posts = [p for p in Post.objects.all() if p.author == user]
+        return render(request, 'blog/profile.html', {'posts':posts})
+    else:
+        return redirect('homepage')
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -62,6 +77,3 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-
-def test_page(request):
-    return render(request, 'blog/test_page.html')
