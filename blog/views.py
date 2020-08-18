@@ -11,8 +11,11 @@ from django.contrib import messages
 def redirect_home(request):
     return redirect('homepage')
 
-def home(request):
-    return render(request, 'blog/homepage.html')
+def home(request, arg=""):
+    if arg:
+        redirect('post_titles')
+    else:
+        return render(request, 'blog/homepage.html')
 
 def register(request):
      # create form, populate it w data from request
@@ -55,13 +58,19 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form':form})
 
+
 @login_required
-def user_profile(request, username=""):
-    user = get_object_or_404(User, username = username)
-    if username:
-        posts = [p for p in Post.objects.all() if p.author == user]
-        return render(request, 'blog/profile.html', {'posts':posts})
+def user_profile(request, username="default_placeholder"):
+    if username != "default_placeholder":
+        # check if username references a legit user
+        user = get_object_or_404(User, username = username)
+        if request.user.username == username:
+            posts = [p for p in Post.objects.all() if p.author == user]
+            return render(request, 'blog/profile.html', {'posts':posts})
+        else:
+            return redirect('homepage')
     else:
+        # this neesd to redirect to home on argument provided *********
         return redirect('homepage')
 
 def post_edit(request, pk):

@@ -12,7 +12,7 @@
     {% else %}
       <h2>{{ post.title }}</h2>
       <div class="date">
-        <p style=font-weight:normal;>Written By: {{ user.username }}</p>
+        <p style=font-weight:normal;>Written By: {{ post.author }}</p>
       </div>
       <p>{{ post.text|linebreaksbr }}</p>
     {% endif %}
